@@ -23,4 +23,19 @@ public class MessageFormatTypeTest {
 
     System.out.println(format);
   }
+
+  @Test
+  void testMessageFormatTypeAmerica() {
+    Locale locale = new Locale("en", "US");
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("message", locale);
+
+    String pattern = resourceBundle.getString("status");
+
+    MessageFormat messageFormat = new MessageFormat(pattern, locale);
+    String format = messageFormat.format(new Object[] {
+        "Herman", new Date(), 1_000_000
+    });
+
+    System.out.println(format);
+  }
 }
